@@ -1,0 +1,19 @@
+_schema-version: 3
+ID: cf.samples.spring.music.prod-config
+extends: cf.samples.spring.music
+
+modules:
+  - name: spring-music-web
+    parameters:
+      memory: 1G
+      instances: 1
+    properties:
+      POPULATE_ALBUM_REPOSITORY: false
+  - name: spring-music-news
+    parameters:
+      memory: 128M  
+resources:
+  - name: spring-music-news-external
+    parameters:
+      config: 
+        url: https://trial-i069874-spring-music-news-external.cfapps.sap.hana.ondemand.com/news
