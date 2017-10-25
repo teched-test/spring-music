@@ -26,4 +26,7 @@ TODO
 DODO
 
 # Deployment via CF MTA deploy service
-TODO
+To deploy the MTA archive, built in the previous step, via [CF MTA deploy service](https://github.com/SAP/cf-mta-deploy-service) run the following command from the root directory:
+```
+cf deploy mta-assembly/spring-music.mtar
+```
