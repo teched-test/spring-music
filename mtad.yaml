@@ -30,7 +30,7 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: postgresql
-      service-plan: v9.4-container
+      service-plan: v9.4-dev-large
   - name: spring-music-news-external
     type: org.cloudfoundry.user-provided-service
     parameters:

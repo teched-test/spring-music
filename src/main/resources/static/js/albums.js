@@ -48,6 +48,7 @@ function AlbumsController($scope, $modal, Albums, Album, Status) {
         );
     }
 
+    
     $scope.addAlbum = function () {
         var addModal = $modal.open({
             templateUrl: 'templates/albumForm.html',
