@@ -1,6 +1,14 @@
 [
 	{
-		"id": "1",
-		"content": "Internal news content"
+		"content": "Some interesting news content",
+		"type" : "Internal",
+		"author": "John",
+		"date": "01.01.2017"
+	},
+	{
+		"content": "Some sad  news content",
+		"type": "Internal",
+		"author": "Smith",
+		"date": "25.04.2016"
 	}
 ]
