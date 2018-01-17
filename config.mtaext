@@ -16,4 +16,4 @@ resources:
   - name: spring-music-news-external
     parameters:
       config: 
-        url: https://trial-i069874-spring-music-news-external.cfapps.sap.hana.ondemand.com/news
+        url: i069874-spring-music-news-external.cfapps.sap.hana.ondemand.com

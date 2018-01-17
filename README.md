@@ -25,8 +25,30 @@ TODO
 ## Building MTA archive
 DODO
 
-# Deployment via CF MTA deploy service
-To deploy the MTA archive, built in the previous step, via [CF MTA deploy service](https://github.com/SAP/cf-mta-deploy-service) run the following command from the root directory:
+# Deployment
+## Push external news app
+To push the spring-music-news-external app run the following command from the 
+*spring-music-news-external* directory:
 ```
-cf deploy mta-assembly/spring-music.mtar
+cf push
+```
+## Prepare the deployment specific app configuration
+Our MTA has some deployment specific configuration which we should additionally provide in a *config.mtaext* (MTA extension descritpro) file. To do that first we need to find to URL of our spring-music-news-external app, pushed in the previous step via the following command:
+```
+cf a
+```
+which should produce the following output:
+```
+$ cf a
+Getting apps in org deploy-service / space i069874 as i069874...
+OK
+
+name                         requested state   instances   memory   disk   urls
+spring-music-news-external   started           1/1         128M     1G     i069874-spring-music-news-external.cfapps.sap.hana.ondemand.com
+```
+The app URL value should be set as value of the *url* parameter of the config.mtaext file.
+## Deployment via CF MTA deploy service
+To deploy the MTA archive via [CF MTA deploy service](https://github.com/SAP/cf-mta-deploy-service) run the following command from the *root* directory:
+```
+cf deploy mta-assembly/spring-music.mtar -e config.mtaext
 ```
