@@ -2,4 +2,4 @@ applications:
 - name: spring-music-news-external
   path: web/
   memory: 128M
-  host: trial-i069874-spring-music-news-external
+  host: spring-music-news-external-demo

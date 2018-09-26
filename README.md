@@ -22,8 +22,9 @@ TODO
 
 ## Compiling and Packaging
 TODO
+
 ## Building MTA archive
-DODO
+TODO
 
 # Deployment
 ## Push external news app
@@ -32,23 +33,30 @@ To push the spring-music-news-external app run the following command from the
 ```
 cf push
 ```
-## Prepare the deployment specific app configuration
-Our MTA has some deployment specific configuration which we should additionally provide in a *config.mtaext* (MTA extension descritpro) file. To do that first we need to find to URL of our spring-music-news-external app, pushed in the previous step via the following command:
-```
-cf a
-```
-which should produce the following output:
-```
-$ cf a
-Getting apps in org deploy-service / space i069874 as i069874...
-OK
+If the application push fails because of the route already being taken - open the `manifest.yml` and modify the [host](https://github.com/nvvalchev/spring-music/blob/master/spring-music-news-external/manifest.yml#L5) entry.
 
-name                         requested state   instances   memory   disk   urls
-spring-music-news-external   started           1/1         128M     1G     i069874-spring-music-news-external.cfapps.sap.hana.ondemand.com
+## Prepare the deployment specific app configuration
+Our MTA has some deployment specific configuration which we should additionally provide in a `*.mtaext` (MTA extension descriptor) file. In the root folder there are two such files prepared `config.mtaext` which consumes a database service and a lighter version - `config-trial.mtaext` which runs with in-memory database and could be deployed on SAP Cloud Foundry Trial without consuming service quota.
+
+### If you have modified *spring-music-news-external*'s host
+
+Inside the extension descriptor of your choice edit the spring-music-news-external's config [url](https://github.com/nvvalchev/spring-music/blob/master/config.mtaext#L23) so that it matches your custom host.
+
+Before the change:
 ```
-The app URL value should be set as value of the *url* parameter of the config.mtaext file.
+        url: https://spring-music-news-external-demo.${default-domain}/news
+```
+After the change:
+```
+        url: https://my-custom-hostname.${default-domain}/news
+```
+
 ## Deployment via CF MTA deploy service
 To deploy the MTA archive via [CF MTA deploy service](https://github.com/SAP/cf-mta-deploy-service) run the following command from the *root* directory:
 ```
 cf deploy mta-assembly/spring-music.mtar -e config.mtaext
+```
+Or if you are deploying the lite version:
+```
+cf deploy mta-assembly/spring-music.mtar -e config-trial.mtaext
 ```
