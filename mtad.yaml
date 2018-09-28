@@ -1,4 +1,4 @@
-_schema-version: 3
+_schema-version: 3.1
 ID: cf.samples.spring.music
 version: 1.0.0
 
@@ -29,8 +29,8 @@ resources:
   - name: spring-music-db
     type: org.cloudfoundry.managed-service
     parameters:
-      service: postgresql
-      service-plan: v9.4-dev-large
+      service: # unspecified to provide configuration with an extension descriptor
+      service-plan: # unspecified to provide configuration with an extension descriptor
   - name: spring-music-news-external
     type: org.cloudfoundry.user-provided-service
     parameters:

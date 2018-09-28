@@ -5,7 +5,7 @@ extends: cf.samples.spring.music
 modules:
   - name: spring-music-web
     parameters:
-      memory: 1G
+      memory: 768M
       instances: 1
     properties:
       POPULATE_ALBUM_REPOSITORY: false
@@ -14,9 +14,10 @@ modules:
       memory: 128M  
 resources:
   - name: spring-music-db
+    active: false
     parameters:
-      service: postgresql    # the application supports the following DBs: mongodb / postgres / mysql / redis / oracle
-      service-plan: v9.6-dev # change these two parameters to fit a service and plan supported by your Cloud Foundry instance
+      service: dummy-value
+      service-plan: dummy-value
   - name: spring-music-news-external
     parameters:
       config: 
