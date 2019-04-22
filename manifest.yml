@@ -1,0 +1,15 @@
+---
+applications:
+- name: spring-music-web
+  memory: 1G
+  host: trial-i069874-spring-music-web
+  path: build/libs/spring-music.jar
+  NEWS_URL: https://trial-i069874-spring-music-news.cfapps.sap.hana.ondemand.com/news
+  POPULATE_ALBUM_REPOSITORY: false
+  services:
+  - spring-music-news-external
+  - spring-music-db
+- name: spring-music-news
+  memory: 128M
+  host: trial-i069874-spring-music-news
+  buildpack: nodejs_buildpack  
